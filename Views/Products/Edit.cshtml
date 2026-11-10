@@ -1,0 +1,24 @@
+﻿@model Warehouse_25dh230017.Product
+@{ ViewBag.Title = "Sửa sản phẩm"; }
+<h2>Sửa sản phẩm</h2>
+@Html.ValidationSummary(false, "", new { @class = "error" })
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post))
+{
+    <input type="hidden" name="ProductID" value="@Model.ProductID" />
+    <div class="row"><label>ProductID</label> @Model.ProductID</div>
+    <div class="row">
+        <label>Tên sản phẩm</label>
+        <input type="text" name="ProductName" value="@(ViewBag.Name ?? Model.ProductName)" />
+    </div>
+    <div class="row">
+        <label>Danh mục</label>
+        <input type="text" name="Category" value="@(ViewBag.Cat ?? Model.Category)" />
+    </div>
+    <div class="row">
+        <label>Đơn giá</label>
+        <input type="number" step="0.01" name="Price" value="@(ViewBag.Pr ?? Model.Price)" />
+    </div>
+    <div class="row"><label>Tồn kho</label> @Model.Quantity (không được sửa)</div>
+    <button type="submit">Lưu</button>
+    @Html.ActionLink("Quay lại", "Index")
+}

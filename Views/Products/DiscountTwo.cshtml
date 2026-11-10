@@ -1,0 +1,21 @@
+﻿@model Warehouse_25dh230017.Product
+@{ ViewBag.Title = "Giảm giá hai sản phẩm"; }
+<h2>Giảm giá hai sản phẩm trong một giao dịch</h2>
+@using (Html.BeginForm("DiscountTwo", "Products", FormMethod.Post))
+{
+    <div class="row">
+        <label>Sản phẩm A</label>
+        @Html.DropDownList("id1", (SelectList)ViewBag.Products1)
+        Giảm (%): <input type="number" step="0.01" name="percent1" />
+    </div>
+    <div class="row">
+        <label>Sản phẩm B</label>
+        @Html.DropDownList("id2", (SelectList)ViewBag.Products2)
+        Giảm (%): <input type="number" step="0.01" name="percent2" />
+    </div>
+    <button type="submit">Áp dụng</button>
+}
+@if (ViewBag.Error != null)
+{<div class="error">@ViewBag.Error</div>}
+@if (ViewBag.Message != null)
+{<div class="ok">@ViewBag.Message</div>}

@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Stats";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ ViewBag.Title = "Thống kê"; }
+<h2>Thống kê kho hàng</h2>
+<table style="width:auto">
+    <tr><th>Tổng số sản phẩm</th><td>@ViewBag.Total</td></tr>
+    <tr><th>Số sản phẩm "Giá cao" (từ 500.000)</th><td>@ViewBag.HighCount</td></tr>
+    <tr><th>Tổng giá trị tồn kho</th><td>@(((decimal)ViewBag.TotalValue).ToString("N0")) đồng</td></tr>
+</table>

@@ -1,0 +1,30 @@
+﻿@model Warehouse_25dh230017.Product
+@{ ViewBag.Title = "Điều chỉnh giá"; }
+<h2>Tăng / giảm giá theo phần trăm</h2>
+@using (Html.BeginForm("Adjust", "Products", FormMethod.Post))
+{
+    <div class="row">
+        <label>Sản phẩm</label>
+        @Html.DropDownList("id", (SelectList)ViewBag.Products)
+    </div>
+    <div class="row">
+        <label>Thao tác</label>
+        <select name="mode">
+            <option value="increase">Tăng giá</option>
+            <option value="decrease">Giảm giá</option>
+        </select>
+    </div>
+    <div class="row">
+        <label>Tỷ lệ (%)</label>
+        <input type="number" step="0.01" name="percent" />
+    </div>
+    <button type="submit">Thực hiện</button>
+}
+@if (ViewBag.Error != null)
+{<div class="error">@ViewBag.Error</div>}
+@if (ViewBag.Message != null)
+{<div class="ok">@ViewBag.Message</div>}
+@if (Model != null)
+{
+    <p>Giá hiện tại trong CSDL của <b>@Model.ProductName</b>: <b>@Model.Price.ToString("N0")</b> (@Model.PriceLevel)</p>
+}
